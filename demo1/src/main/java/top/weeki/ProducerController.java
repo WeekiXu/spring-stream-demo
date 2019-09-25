@@ -18,4 +18,16 @@ public class ProducerController {
         @RequestParam String msg) {
         sendService.sendMsg(msg);
     }
+
+    @GetMapping("/user/project/send")
+    public void sendProject(
+        @RequestParam String msg) {
+        sendService.sendUserProjectMsg(msg);
+    }
+
+    @GetMapping("/user/task/send")
+    public void sendTask(
+        @RequestParam String msg) {
+        sendService.sendUserTaskMsg(msg);
+    }
 }
