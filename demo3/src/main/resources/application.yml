@@ -13,3 +13,4 @@ spring:
       bindings:
         input:
           destination: test
+          group: consumer_2
