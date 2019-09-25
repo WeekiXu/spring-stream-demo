@@ -1,0 +1,15 @@
+server:
+  port: 7883
+spring:
+  application:
+    name: consumer_2
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: 192.168.3.29:9092
+          zk-nodes: 192.168.3.29:2181
+          auto-create-topics: true
+      bindings:
+        input:
+          destination: test
