@@ -3,17 +3,28 @@ server:
 spring:
   application:
     name: consumer_2
+  rabbitmq:
+    port: 5672
+    username:
+    password:
+    virtual-host: idss-test
+    host: 
+    template:
+      exchange: test
   cloud:
     stream:
-      kafka:
-        binder:
-          brokers: 192.168.3.29:9092
-          zk-nodes: 192.168.3.29:2181
-          auto-create-topics: true
+#      kafka:
+#        binder:
+#          brokers: 192.168.3.29:9092
+#          zk-nodes: 192.168.3.29:2181
+#          auto-create-topics: true
       bindings:
-        input_user_project:
-          destination: user_project
-          group: consumer_2
-        input_user_task:
+        input:
+#          destination: test
+#          group: consumer
+#        input_user_project:
+#          destination: user_project
+#          group: consumer_2
+#        input_user_task:
           destination: user_task
           group: consumer_2
