@@ -1,13 +1,5 @@
 package top.weeki.rabbit;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import org.springframework.amqp.core.Binding;
-import org.springframework.amqp.core.BindingBuilder;
-import org.springframework.amqp.core.DirectExchange;
-import org.springframework.amqp.core.Exchange;
-import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,38 +37,6 @@ public class RabbitConfig {
         ((CachingConnectionFactory) connectionFactory)
             .setPublisherReturns(rabbitProperties.isPublisherReturns());
         return connectionFactory;
-    }
-
-    /**
-     * 申明队列
-     *
-     * @return
-     */
-    @Bean
-    public Queue queue() {
-        Map<String, Object> arguments = new HashMap<>(4);
-
-        return new Queue("queue-rabbit-springboot-advance5", true, false, false,
-            arguments);
-    }
-
-    @Bean
-    public Exchange exchange() {
-        Map<String, Object> arguments = new HashMap<>(4);
-
-        return new DirectExchange("exchange-rabbit-springboot-advance5", true,
-            false, arguments);
-    }
-
-    /**
-     * 申明绑定
-     *
-     * @return
-     */
-    @Bean
-    public Binding binding() {
-        return BindingBuilder.bind(queue()).to(exchange()).with("product")
-            .noargs();
     }
 
 }
